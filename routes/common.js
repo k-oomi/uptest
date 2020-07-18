@@ -5,7 +5,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
   req.session.destroy();
-  res.render('common',{});
+  res.render('common');
 });
 
 module.exports = router;
