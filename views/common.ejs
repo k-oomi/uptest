@@ -65,24 +65,7 @@
 </body>
 <script>
   'use strict';
-  function toggleNav() {
-    var body = document.body;
-    var hamburger = document.getElementById('js-hamburger');
-    var blackBg = document.getElementById('js-black-bg');
-
-
-
-
-    hamburger.addEventListener('click', function () {
-      body.classList.toggle('nav-open');
-      // style.color = 'black';
-
-    });
-    blackBg.addEventListener('click', function () {
-      body.classList.remove('nav-open');
-    });
-  }
-  toggleNav();
+  
   //*****************************************************************
   // 宣言エリア
   //*****************************************************************
@@ -179,9 +162,7 @@
       }
     }
 
-    if (!(fileReader.result)) {
-      return;
-    }
+ 
 
     if ((flg == 1 && cnt == quantity) || (flg == 1 && cnt == array.length)) {
       pDiv1.innerText = "終了です。";
@@ -209,9 +190,7 @@
       pDiv5.innerHTML = array[cnt][flg + 3];
       cnt++;
     }
-    // if (cnt == quantity) {
-    //     cnt = 0;
-    // }
+
    
   };
     //*****************************************************************
