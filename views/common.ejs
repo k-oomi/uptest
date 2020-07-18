@@ -100,21 +100,20 @@
   let pcnt = document.getElementById("cnt");
   let fileReader = new FileReader();
 
+  getCSV();
   //*****************************************************************
-  //
+  //CSVファイル読み込み
   //*****************************************************************
-  fileInput.onchange = () => {
-    let file = fileInput.files[0];
-    fileReader.readAsText(file);
-  };
-  //* レスポンスが返ってきたらconvertCSVtoArray()を呼ぶ	
-  fileReader.onload = function () {
-
-    convertCSVtoArray(fileReader.result); // 渡されるのは読み込んだCSVデータ
-    shufle(array);
-
-  }
-
+  function getCSV() {
+        let req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
+        req.open("get", "csv/tango.csv", true); // アクセスするファイルを指定   
+        req.send(null); // HTTPリクエストの発行
+        // レスポンスが返ってきたらconvertCSVtoArray()を呼ぶ	
+        req.onload = function () {
+            convertCSVtoArray(req.responseText); // 渡されるのは読み込んだCSVデータ
+            shufle(array);
+        }
+    }
   //*****************************************************************
   // convertCSVtoArray() 読み込んだCSVデータを二次元配列に変換する関数 
   //*****************************************************************
