@@ -6,6 +6,7 @@ var logger = require('morgan');
 var session = require('express-session');
 var commonRouter = require('./routes/common');
 var usersRouter = require('./routes/users');
+var personalRouter = require('./routes/personal');
 var fs = require('fs');
 var csv = require('csv');
 
@@ -33,6 +34,8 @@ app.use(session(ses_opt));
 
 app.use('/', commonRouter);
 app.use('/users', usersRouter);
+app.use('/personal', personalRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
