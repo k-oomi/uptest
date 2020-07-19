@@ -6,7 +6,8 @@
     <title>tangotest</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS only -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
     <!-- <link rel="stylesheet" href="style_1.css"> -->
 </head>
@@ -16,6 +17,7 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
                 <a class="navbar-brand" href="#">単語テスト</a>
+                <!-- <p></p> -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -55,7 +57,9 @@
             <div class="col-md-9">
                 <div id="card">
                     <div class="card-body">
-                        <div class="text-right"><p id="cnt">　</p></div>
+                        <div class="text-right">
+                            <p id="cnt">　</p>
+                        </div>
                         <h2 id="textdiv_1" class="text-center">　</h2>
                         <p class="border-bottom text-center"><span id="textdiv_2">　</span></p>
                         <p class="border-bottom text-center"><span id="textdiv_3">　</span></p>
@@ -74,6 +78,10 @@
             </div>
         </div>
     </div>
+    <footer>
+      
+    </footer>
+
 </body>
 <script>
     'use strict';
@@ -155,7 +163,7 @@
     //*****************************************************************
     function changeText() {
 
-        
+
         quantity = array.length;
 
         for (var i = elements.length; i--;) {
