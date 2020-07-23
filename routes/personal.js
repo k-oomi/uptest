@@ -1,20 +1,20 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
+let file = [];
 
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  if (req.session.login != undefined){
-    let file = [];
+  if (req.session.login != undefined){    
     let fileName = fs.readdirSync("public/csv");
     for(let i in fileName){
-      if (req.session.login.id = fileName[i].substr(0,req.session.login.id.length)){
-        file.push = fileName[i]
+      var cut_str = '_';
+      var index   = fileName[i].indexOf(cut_str);
+      if (req.session.login.id == fileName[i].substr(0,index) ){
+         file.push(fileName[i]);
       }    
     };
-
-
       let opt = {
         data: req.session.login,
         file: file

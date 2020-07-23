@@ -48,10 +48,10 @@
         <div id="nav">
             <p>ファイルを選択：<br>
                 <select name="blood">
-                <% for(let i in file) {%>
-                    <option value="<%=i %>" ><%= file[i] %> </option>
-
-                <% } %>  
+                    <% for(let i in file) {%> 
+                    <option value="<%=i %>"  ><%= file[i] %> </option>
+                    <% } %> 
+                 
      
                 </select></p>
             <input type="file" id="01" accept="text/csv" class="mt-4 mb-4">
