@@ -46,6 +46,13 @@
 
     <div class="container">
         <div id="nav">
+            <p>ファイルを選択：<br>
+                <select name="blood">
+                <option value="A"><%= file %> </option>
+                <option value="B">B型</option>
+                <option value="O">O型</option>
+                <option value="AB">AB型</option>
+                </select></p>
             <input type="file" id="01" accept="text/csv" class="mt-4 mb-4">
             <div>
                 <input type="radio" name="r" id="r1" value="0"><label for="r1" class="mr-3">10問</label>
