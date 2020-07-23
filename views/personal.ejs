@@ -55,7 +55,7 @@
                   <button type="button" onclick="getCSV()">決定</button>
 
                 </p>
-            <input type="file" id="01" accept="text/csv" class="mt-4 mb-4">
+           
             <div>
                 <input type="radio" name="r" id="r1" value="0"><label for="r1" class="mr-3">10問</label>
                 <input type="radio" name="r" id="r2" value="1"><label for="r2" class="mr-3">30問</label>
@@ -126,8 +126,9 @@
             }
         };
         console.log('選択したファイルは： ' + csvFile);
+        var testfile = "tango20200718.csv";
         let req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-        req.open("get", "csv/" + csvFile, true); // アクセスするファイルを指定   
+        req.open("get","csv/" + csvFile, true); // アクセスするファイルを指定   
         req.send(null); // HTTPリクエストの発行
         // レスポンスが返ってきたらconvertCSVtoArray()を呼ぶ	
         req.onload = function () {
@@ -138,17 +139,17 @@
     //*****************************************************************
     //
     //*****************************************************************
-    fileInput.onchange = () => {
-        let file = fileInput.files[0];
-        fileReader.readAsText(file);
-    };
+    // fileInput.onchange = () => {
+    //     let file = fileInput.files[0];
+    //     fileReader.readAsText(file);
+    // };
     //* レスポンスが返ってきたらconvertCSVtoArray()を呼ぶ	
-    fileReader.onload = function () {
+    // fileReader.onload = function () {
 
-        convertCSVtoArray(fileReader.result); // 渡されるのは読み込んだCSVデータ
-        shufle(array);
+    //     convertCSVtoArray(fileReader.result); // 渡されるのは読み込んだCSVデータ
+    //     shufle(array);
 
-    }
+    // }
 
     //*****************************************************************
     // convertCSVtoArray() 読み込んだCSVデータを二次元配列に変換する関数 
@@ -215,9 +216,9 @@
             }
         }
 
-        if (!(fileReader.result)) {
-            return;
-        }
+        // if (!(fileReader.result)) {
+        //     return;
+        // }
 
         if ((flg == 1 && cnt == quantity) || (flg == 1 && cnt == array.length)) {
             pDiv1.innerText = "終了です。";

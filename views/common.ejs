@@ -93,7 +93,8 @@
   //*****************************************************************
   function getCSV() {
         let req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-        req.open("get", "csv/tango_prt50.csv", true); // アクセスするファイルを指定   
+        var testfile = "tango20200718.csv";
+        req.open("get", "csv/" + testfile, true); // アクセスするファイルを指定   
         req.send(null); // HTTPリクエストの発行
         // レスポンスが返ってきたらconvertCSVtoArray()を呼ぶ	
         req.onload = function () {
