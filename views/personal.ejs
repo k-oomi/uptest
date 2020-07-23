@@ -47,13 +47,14 @@
     <div class="container">
         <div id="nav">
             <p>ファイルを選択：<br>
-                <select name="blood">
-                    <% for(let i in file) {%> 
-                    <option value="<%=i %>"  ><%= file[i] %> </option>
-                    <% } %> 
-                 
-     
-                </select></p>
+                <select id="target">
+                    <% for(let i in file){ %>
+                    <option><%= file[i]%>
+                        <%}%>
+                  </select>
+                  <button type="button" onclick="getCSV()">決定</button>
+
+                </p>
             <input type="file" id="01" accept="text/csv" class="mt-4 mb-4">
             <div>
                 <input type="radio" name="r" id="r1" value="0"><label for="r1" class="mr-3">10問</label>
@@ -110,7 +111,30 @@
     let pDiv5 = document.getElementById("textdiv_5");
     let pcnt = document.getElementById("cnt");
     let fileReader = new FileReader();
+    var fileElement = document.getElementById("target");
+    // 全てのoption要素を取得
+    var fileElements = fileElement.options;
 
+    //*****************************************************************
+    //CSVファイル読み込み
+    //*****************************************************************
+    function getCSV() {
+        let csvFile = "";
+        for (var i = 0, l = fileElements.length; l > i; i++) {
+            if (fileElements[i].selected) {
+                csvFile = fileElements[i].value
+            }
+        };
+        console.log('選択したファイルは： ' + csvFile);
+        let req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
+        req.open("get", "csv/" + csvFile, true); // アクセスするファイルを指定   
+        req.send(null); // HTTPリクエストの発行
+        // レスポンスが返ってきたらconvertCSVtoArray()を呼ぶ	
+        req.onload = function () {
+            convertCSVtoArray(req.responseText); // 渡されるのは読み込んだCSVデータ
+            shufle(array);
+        }
+    }
     //*****************************************************************
     //
     //*****************************************************************
