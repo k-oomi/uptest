@@ -1,12 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
-let file = [];
+
 
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  if (req.session.login != undefined){    
+  if (req.session.login != undefined){  
+    let file = [];  
     let fileName = fs.readdirSync("public/csv");
     for(let i in fileName){
       var cut_str = '_';

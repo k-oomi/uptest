@@ -125,8 +125,6 @@
                 csvFile = fileElements[i].value
             }
         };
-        console.log('選択したファイルは： ' + csvFile);
-        var testfile = "tango20200718.csv";
         let req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
         req.open("get","csv/" + csvFile, true); // アクセスするファイルを指定   
         req.send(null); // HTTPリクエストの発行
