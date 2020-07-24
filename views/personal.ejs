@@ -46,13 +46,13 @@
 
     <div class="container">
         <div id="nav">
-            <p>ファイルを選択：<br>
+            <p>ファイル選択：<br>
                 <select id="target">
                     <% for(let i in file){ %>
                     <option><%= file[i]%>
                         <%}%>
                   </select>
-                  <button type="button" onclick="getCSV()">決定</button>
+                  <button type="button" class="btn btn-outline-primary" onclick="getCSV()">ファイルを読込む</button>
 
                 </p>
            

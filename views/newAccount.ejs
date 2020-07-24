@@ -24,7 +24,10 @@
                 <div class="form-group">
                 <input type="submit" class="btn btn-primary">
             </div>
-            
+            <% if (message != null){ %> 
+            <p><%- message %> </p>
+            <p>アドレス：<%- mail %> </p>
+            <% } %> 
     
         </form>
 
