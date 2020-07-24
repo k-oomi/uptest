@@ -23,6 +23,15 @@ router.get('/', function(req, res, next) {
 router.post('/', async function(req, res, next) {
     let mail = req.body.email;
     let pass = req.body.password;
+    if(pass == "" || mail == ""){
+        let opt ={
+            message:"未入力エラー",
+            mail: null
+        };
+        res.render('newAccount',opt);
+    }
+        
+    
     let sql = "select * from users where mailadd = '" + mail + "'";
     let record = await dbget.getRow(sql);
     if (record != undefined){

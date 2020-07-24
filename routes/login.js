@@ -26,7 +26,7 @@ router.post('/', async function(req, res, next) {
         res.redirect('/personal');
     }
    
-    res.redirect('/');
+    res.redirect('/newAccount');
 });
 
 module.exports = router;
