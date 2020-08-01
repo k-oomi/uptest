@@ -1,16 +1,33 @@
 var express = require('express');
 var router = express.Router();
+var fs = require('fs');
+
+
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-//   if (req.session.data != undefined){
-//     if (req.session.data[0] > 0) {
-//       res.render('personal', {});
-//     }
-//   }else{
-//     res.redirect('/common');
-//   }
-res.render('personal', {});
+  if (req.session.login != undefined){  
+    let file = [];  
+    let fileName = fs.readdirSync("public/csv");
+    for(let i in fileName){
+      var cut_str = '_';
+      var index   = fileName[i].indexOf(cut_str);
+      if (req.session.login.id == fileName[i].substr(0,index) ){
+         file.push(fileName[i]);
+      }    
+    };
+      let opt = {
+        data: req.session.login,
+        file: file
+      };
+        
+      res.render('personal',opt);
+    
+  }else{
+    res.redirect('/');
+  }
+
+
   
 });
 

@@ -8,6 +8,7 @@ var commonRouter = require('./routes/common');
 var usersRouter = require('./routes/users');
 var personalRouter = require('./routes/personal');
 var loginlRouter = require('./routes/login');
+var newAccountRouter = require('./routes/newAccount');
 var fs = require('fs');
 var csv = require('csv');
 
@@ -37,6 +38,7 @@ app.use('/', commonRouter);
 app.use('/users', usersRouter);
 app.use('/personal', personalRouter);
 app.use('/login', loginlRouter);
+app.use('/newAccount', newAccountRouter);
 
 
 // catch 404 and forward to error handler

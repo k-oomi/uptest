@@ -6,16 +6,19 @@
     <title>tangotest</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS only -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
     <!-- <link rel="stylesheet" href="style_1.css"> -->
 </head>
 
 <body>
+
     <div class="container bg-secondary">
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
                 <a class="navbar-brand" href="#">単語テスト</a>
+                <!-- <p></p> -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -24,10 +27,16 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li class="nav-item">
+                            <a class="nav-link" href="personal">Top</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/NewFile">NewFile</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/edit">Edit</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/common">Logout</a>
+                            <a class="nav-link" href="/">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -37,7 +46,16 @@
 
     <div class="container">
         <div id="nav">
-            <input type="file" id="01" accept="text/csv" class="mt-4 mb-4">
+            <p>ファイル選択：<br>
+                <select id="target">
+                    <% for(let i in file){ %>
+                    <option><%= file[i]%>
+                        <%}%>
+                  </select>
+                  <button type="button" class="btn btn-outline-primary" onclick="getCSV()">ファイルを読込む</button>
+
+                </p>
+           
             <div>
                 <input type="radio" name="r" id="r1" value="0"><label for="r1" class="mr-3">10問</label>
                 <input type="radio" name="r" id="r2" value="1"><label for="r2" class="mr-3">30問</label>
@@ -49,7 +67,9 @@
             <div class="col-md-9">
                 <div id="card">
                     <div class="card-body">
-                        <div class="text-right"><p id="cnt">　</p></div>
+                        <div class="text-right">
+                            <p id="cnt">　</p>
+                        </div>
                         <h2 id="textdiv_1" class="text-center">　</h2>
                         <p class="border-bottom text-center"><span id="textdiv_2">　</span></p>
                         <p class="border-bottom text-center"><span id="textdiv_3">　</span></p>
@@ -68,6 +88,10 @@
             </div>
         </div>
     </div>
+    <footer>
+      
+    </footer>
+
 </body>
 <script>
     'use strict';
@@ -87,21 +111,43 @@
     let pDiv5 = document.getElementById("textdiv_5");
     let pcnt = document.getElementById("cnt");
     let fileReader = new FileReader();
+    var fileElement = document.getElementById("target");
+    // 全てのoption要素を取得
+    var fileElements = fileElement.options;
 
+    //*****************************************************************
+    //CSVファイル読み込み
+    //*****************************************************************
+    function getCSV() {
+        let csvFile = "";
+        for (var i = 0, l = fileElements.length; l > i; i++) {
+            if (fileElements[i].selected) {
+                csvFile = fileElements[i].value
+            }
+        };
+        let req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
+        req.open("get","csv/" + csvFile, true); // アクセスするファイルを指定   
+        req.send(null); // HTTPリクエストの発行
+        // レスポンスが返ってきたらconvertCSVtoArray()を呼ぶ	
+        req.onload = function () {
+            convertCSVtoArray(req.responseText); // 渡されるのは読み込んだCSVデータ
+            shufle(array);
+        }
+    }
     //*****************************************************************
     //
     //*****************************************************************
-    fileInput.onchange = () => {
-        let file = fileInput.files[0];
-        fileReader.readAsText(file);
-    };
+    // fileInput.onchange = () => {
+    //     let file = fileInput.files[0];
+    //     fileReader.readAsText(file);
+    // };
     //* レスポンスが返ってきたらconvertCSVtoArray()を呼ぶ	
-    fileReader.onload = function () {
+    // fileReader.onload = function () {
 
-        convertCSVtoArray(fileReader.result); // 渡されるのは読み込んだCSVデータ
-        shufle(array);
+    //     convertCSVtoArray(fileReader.result); // 渡されるのは読み込んだCSVデータ
+    //     shufle(array);
 
-    }
+    // }
 
     //*****************************************************************
     // convertCSVtoArray() 読み込んだCSVデータを二次元配列に変換する関数 
@@ -149,7 +195,7 @@
     //*****************************************************************
     function changeText() {
 
-        
+
         quantity = array.length;
 
         for (var i = elements.length; i--;) {
@@ -168,9 +214,9 @@
             }
         }
 
-        if (!(fileReader.result)) {
-            return;
-        }
+        // if (!(fileReader.result)) {
+        //     return;
+        // }
 
         if ((flg == 1 && cnt == quantity) || (flg == 1 && cnt == array.length)) {
             pDiv1.innerText = "終了です。";
@@ -184,6 +230,11 @@
 
         flg = flg ^ 1;
         if (flg == 0) {
+            if (array[cnt][4] == "1"){
+                cnt++;
+                flg = 1;
+                return;
+            };
             pDiv1.innerHTML = array[cnt][flg];
             pDiv2.innerHTML = '　';
             pDiv3.innerHTML = '　';
@@ -195,7 +246,7 @@
             pDiv2.innerHTML = array[cnt][flg];
             pDiv3.innerHTML = array[cnt][flg + 1];
             pDiv4.innerHTML = array[cnt][flg + 2];
-            pDiv5.innerHTML = array[cnt][flg + 3];
+            pDiv5.innerHTML = '覚えた　<input type="radio" name="gakunen" value="1">はい';//ダミー実装
             cnt++;
         }
     };
