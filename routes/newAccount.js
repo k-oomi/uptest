@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+const { check, validationResult } = require('express-validator/check')
+
 
 var dbdo = require('../db/exec.js');
 var dbget = require('../db/get.js');
@@ -20,7 +22,14 @@ router.get('/', function(req, res, next) {
 
 
 //POST
-router.post('/', async function(req, res, next) {
+router.post('/', [
+    check('email')
+    .isEmail().withMessage('メールアドレスを入力して下さい'),
+check('password')
+    .isLength({ min: 4 }).withMessage('パスワードは5文字以上です')
+    .matches(/\d/).withMessage('パスワードに数値を含めて下さい')
+],async function(req, res, next) {
+    const errors = validationResult(req)
     let mail = req.body.email;
     let pass = req.body.password;
     if(pass == "" || mail == ""){
