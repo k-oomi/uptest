@@ -1,0 +1,13 @@
+<%- include('header')%>
+    
+<p>ファイルを選択してください</p>
+<form action="/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".csv,text/csv" required>
+    <input type="submit">
+</form>
+<% if (message){ %>
+    <p><%=message %></p>
+
+ <% } %>
+</body>
+</html>

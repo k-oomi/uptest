@@ -24,10 +24,19 @@
                 <div class="form-group">
                 <input type="submit" class="btn btn-primary">
             </div>
-            <% if (message != null){ %> 
-            <p><%- message %> </p>
-            <p>アドレス：<%- mail %> </p>
-            <% } %> 
+            <% if(message) { %>
+                <ul>
+                    <% for (let n in message) { %>
+                    <li>
+                        <%= message[n].msg %>
+                    </li>
+                    <% } %>
+                </ul>
+                <% } %>
+
+                <% if(correctMessage) { %>
+                    <%= correctMessage %>
+                    <% } %>
     
         </form>
 
