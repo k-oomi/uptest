@@ -47,16 +47,17 @@
 
     <P id="cnt">　</P>
     <div class="card-body">
-      <h2 id="textdiv_1" class="text-center font-weight-bold">  </h2>
+      <p id="textdiv_1" class="text-center font-weight-bold">　</p>
+      <!-- <h2 id="textdiv_1" class="text-center font-weight-bold">  </h2> -->
       <p class="border-bottom text-center"><span id="textdiv_2">　</span></p>
       <p class="border-bottom text-center"><span id="textdiv_3">　</span></p>
       <p class="border-bottom text-center"><span id="textdiv_4">　</span></p>
       <p class="text-center" type ="hidden"><span id="textdiv_5" type="hidden">　</span></p>
     </div>
     <div class="button">
-      <button type="button" class="btn btn-outline-success w-25 mt-5" onclick="changeText()" id ="start">START</button>
-      <button type="button" class="btn btn-outline-success w-25 mt-5" onclick="back()" id="bk_btn">back</button>
-      <button type="button" class="btn btn-outline-success w-25 mt-5" onclick="Reset()">Reset</button>
+      <button type="button" class="btn btn-outline-dark w-25 mt-5" onclick="changeText()" id ="start">START</button>
+      <button type="button" class="btn btn-outline-dark w-25 mt-5" onclick="back()" id="bk_btn">back</button>
+      <button type="button" class="btn btn-outline-danger w-25 mt-5" onclick="Reset()">Reset</button>
 
     </div>
   </div>
@@ -152,6 +153,7 @@
     for(let i = elements.length; i--;){
       elements[i].disabled = false;
     }
+    bk_btn.disabled = true;
   };
 
   //*****************************************************************
