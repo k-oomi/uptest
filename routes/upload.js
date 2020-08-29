@@ -7,7 +7,8 @@ const storage = multer.diskStorage({
   },
   filename: function(req, file, cd){
     //第2引数でファイル名指定
-    cd(null, '01_' + file.originalname)
+    const userId = req.session.login.id;
+    cd(null, userId + '_' +  file.originalname)
   }
 });
 // const upload = multer({dest:'public/csv/'});
@@ -17,7 +18,7 @@ const upload = multer({storage: storage});
 ///'/'はこのupload.js自身
 router.get('/', function(req, res, next) {
   let opt = {
-    message:''
+    message:'',
   }
 
   res.render('upload',opt);//ejsのファイル名
@@ -27,8 +28,11 @@ router.post('/',upload.single('file'),function(req,res){
   //アップロードされたファイルをhtmlで表示するためにパスを渡す
   //staticのベースがuploadsなので、imagesにあるファイルを指定するには
   ///images/ファイル名とする
+     
+
   let opt = {
-    message:'アップロード成功'
+    message:'アップロード成功',
+
   }
   res.render('upload',opt);
 })
