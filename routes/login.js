@@ -21,6 +21,7 @@ router.post('/', async function(req, res, next) {
         + email + "' and password='" + pass + "'";
     let record = await dbget.getRow(sql);
     if (record != undefined){
+        
         req.session.login = record;
         
         res.redirect('/personal');

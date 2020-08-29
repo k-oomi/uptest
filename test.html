@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="check()" id ="button">ボタン</button>
+    <button onclick="remove()">解除</button>
+    
+</body>
+<script>    
+    const btn = document.getElementById('button');
+    
+    function check(){
+        btn.disabled = true;
+        alert('テスト');
+    }
+    function remove(){
+        if(btn.disabled){
+            btn.disabled = false;
+        }else{
+            btn.disabled = true;
+        }
+    }
+</script>
+</html>

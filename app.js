@@ -3,12 +3,17 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const multer = require('multer');
+var upload = multer({dest:'public/csv/'});
+
+
 var session = require('express-session');
 var commonRouter = require('./routes/common');
 var usersRouter = require('./routes/users');
 var personalRouter = require('./routes/personal');
 var loginlRouter = require('./routes/login');
 var newAccountRouter = require('./routes/newAccount');
+var uploadRouter = require('./routes/upload');
 var fs = require('fs');
 var csv = require('csv');
 
@@ -34,11 +39,18 @@ app.use(session(ses_opt));
 
 
 
-app.use('/', commonRouter);
+app.use('/', commonRouter);//http://localhost:3000
 app.use('/users', usersRouter);
 app.use('/personal', personalRouter);
 app.use('/login', loginlRouter);
 app.use('/newAccount', newAccountRouter);
+app.use('/u', uploadRouter);
+app.use('/upload', uploadRouter);
+// app.use('/upload', uploadRouter);//http://localhost:3000/uploadにアクセス
+//アクセスしたらupload.jsに書いた処理する
+// app.use('/u', uploadRouter);だったらhttp://localhost:3000/uにアクセス
+//アクセスしたらupload.jsに書いた処理する
+
 
 
 // catch 404 and forward to error handler
