@@ -1,6 +1,6 @@
 <%- include('header')%>
 <div class="container">
-
+<p id ="uid" style="display: none;"><%= data.id %></p>
     <div id="nav">
         <p>ファイル選択：<br>
             <select id="target">
@@ -31,10 +31,10 @@
 
       </div>
       <div class="button">
-        <button type="button" class="btn btn-outline-dark w-25 mt-5" onclick="changeText()" id ="start">START</button>
-        <button type="button" class="btn btn-outline-dark w-25 mt-5" onclick="back()" id="bk_btn">back</button>
-        <button type="button" class="btn btn-outline-danger w-25 mt-5" onclick="Reset()">Reset</button>
-  
+        <button type="button" class="play-btn-inner" onclick="back()" id="bk_btn">back</button>
+        <button type="button" class="play-btn-inner" onclick="changeText()" id ="start">start</button>
+        <button type="button" class="play-btn-inner" onclick="Reset()">Reset</button>
+          
       </div>
     </div>
 
@@ -51,6 +51,9 @@
     //*****************************************************************
     // 宣言エリア
     //*****************************************************************
+    const UserId = document.getElementById("uid");
+    console.log(UserId.textContent);
+ 
     let array = [];
     let flag = false;
     const bk_btn = document.getElementById("bk_btn");
@@ -75,6 +78,7 @@
     //CSVファイル読み込み
     //*****************************************************************
     function getCSV() {
+        Reset();
         let csvFile = "";
         for (var i = 0, l = fileElements.length; l > i; i++) {
             if (fileElements[i].selected) {
@@ -82,7 +86,10 @@
             }
         };
         let req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-        req.open("get", "csv/" + csvFile, true); // アクセスするファイルを指定   
+        let id = UserId.textContent;
+        let dir = "csv" + id +  "/";
+        console.log(dir + csvFile);
+        req.open("get", dir + csvFile, true); // アクセスするファイルを指定   
         req.send(null); // HTTPリクエストの発行
         // レスポンスが返ってきたらconvertCSVtoArray()を呼ぶ	
         req.onload = function () {
@@ -156,6 +163,7 @@
     // changeText() ボタンを押されたら表示を変える関数 
     //*****************************************************************
     function changeText() {
+        console.log('changetext');
 
 
         quantity = array.length;

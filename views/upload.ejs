@@ -2,12 +2,14 @@
     
 <p>ファイルを選択してください</p>
 <form action="/upload" method="POST" enctype="multipart/form-data">
-    <input type="file" name="file" accept=".csv,text/csv" required>
-    <input type="submit">
+    <input type="file"  name="file" accept=".csv,text/csv" required>
+    <input type="submit" class ="filebtn"  value="  Upload  ">
 </form>
 <% if (message){ %>
     <p><%=message %></p>
 
  <% } %>
+ <script src=javascripts/app.js></script>
+
 </body>
 </html>

@@ -21,6 +21,7 @@ router.get('/', function (req, res, next) {
       let opt = {
         data: req.session.login,
         file: fileName
+        
       };
         
       res.render('personal',opt);

@@ -6,3 +6,4 @@
 
 fileName　配列でcsvディレクトリ以下のファイル名を格納
       pDiv5.innerHTML = '覚えた　<input type="radio" name="gakunen" value="１年生">はい';
+

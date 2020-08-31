@@ -4,13 +4,49 @@
     box-sizing: border-box;
      
 }
+.filebtn{
+    
+    text-decoration: none;
+    color: #000;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    background-image: linear-gradient(#ffffff,#eff0f5),radial-gradient(circle at top left,#fd5d00,#02191d);   
+    background-origin: border-box;
+    background-clip: content-box,border-box;
+}
+.filebtn:hover{
+    transition: 0.2s;
+    transform: scale(1.15);
+    
+    /* background-image: linear-gradient(#000,#000),radial-gradient(circle at top left,#02191d,#fd5d00);;
+    color: #fff; */
 
+
+}
+.play-btn-inner{
+    
+    color: #000;
+    height: 80px;
+    width:80px;
+    border: 2px solid transparent;   
+    border-radius: 50%;
+    background-image: linear-gradient(#ffffff,#ffffff),radial-gradient(circle at top left,#fd00da,#19d7f8);   
+    background-origin: border-box;
+    background-clip: content-box,border-box; 
+    text-align: center;
+   
+
+    
+}
 
 .card-body > p:nth-child(4) > span{
     color: red;
     /* background-color: red; */
 }
 #textdiv_1{
+    user-select: none; /* CSS3 */
+    -webkit-user-select: none; /* Safari、Chromeなど */
+
     font-weight: 300;
     font-size: 3.5rem;
 }
@@ -35,9 +71,18 @@ nav{
 }
 
 .button{
+    user-select: none; /* CSS3 */
+    -webkit-user-select: none; /* Safari、Chromeなど */
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     
+}
+.button > button{
+    user-select: none; /* CSS3 */
+    -webkit-user-select: none; /* Safari、Chromeなど */
+
+    margin-left: 20px;
+    margin-right: 20px;
 }
 .logo{
 

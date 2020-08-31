@@ -60,6 +60,12 @@
 _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 req.session.loginのデータを取り出すときは、変数.カラム名
 例：data.id
+linear-gradient(#000,#000),
+btn btn-outline-dark w-25 mt-5
+
+<button type="button" class="btn btn-outline-dark w-25 mt-3" onclick="back()" id="bk_btn">back</button>
+<button type="button" class="play-btn-inner" onclick="changeText()" id ="start"><i class="fa fa-play"></i></button>
+<button type="button" class="btn btn-outline-danger w-25 mt-3" onclick="Reset()">Reset</button>
 
 
 

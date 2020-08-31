@@ -3,12 +3,13 @@ var router = express.Router();
 const multer = require('multer');
 const storage = multer.diskStorage({
   destination: function (req,file,cd){
-    cd(null, 'public/csv/')
+    let UserId = req.session.login.id;
+
+    cd(null, 'public/csv' + UserId + '/')
   },
   filename: function(req, file, cd){
     //第2引数でファイル名指定
-    const userId = req.session.login.id;
-    cd(null, userId + '_' +  file.originalname)
+    cd(null, file.originalname)
   }
 });
 // const upload = multer({dest:'public/csv/'});
