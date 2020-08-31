@@ -1,4 +1,5 @@
 var express = require('express');
+const fs = require('fs');
 var router = express.Router();
 const { check, validationResult } = require('express-validator/check')
 
@@ -55,13 +56,29 @@ check('password')
             };
             res.render('newAccount',opt);       
         }else{
-            sql = "insert into users (mailadd,password) values('" + mail + "','" + pass + "')";
+              sql = "insert into users (mailadd,password) values('" + mail + "','" + pass + "')";
             await dbdo.exec(sql);
             let opt ={
                 message:'',
                 mail: mail,
                 correctMessage: '登録完了'
             };
+             sql = "select * from users where mailadd = '" + mail + "' and  password = '" + pass + "'"; 
+            let record = await dbget.getRow(sql);
+            let id = record.id;
+
+            // デフォルトの問題のコピーを作成する
+
+            let dir = './public/csv' + id + '/';
+            fs.mkdirSync(dir);
+
+            let files = fs.readdirSync('./public/csv');   
+            for(let i in files){
+                fs.copyFileSync('./public/csv/' +  files[i], dir + files[i]);
+                
+            }
+
+
             res.render('newAccount',opt);
     
         }
