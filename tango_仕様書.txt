@@ -67,6 +67,7 @@ btn btn-outline-dark w-25 mt-5
 <button type="button" class="play-btn-inner" onclick="changeText()" id ="start"><i class="fa fa-play"></i></button>
 <button type="button" class="btn btn-outline-danger w-25 mt-3" onclick="Reset()">Reset</button>
 
+display: none;使えばいけるかも
 
 
 

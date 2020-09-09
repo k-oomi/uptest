@@ -40,7 +40,7 @@
 }
 
 .card-body > p:nth-child(4) > span{
-    color: red;
+    /* color: red; */
     /* background-color: red; */
 }
 #textdiv_1{
@@ -48,7 +48,7 @@
     -webkit-user-select: none; /* Safari、Chromeなど */
 
     font-weight: 300;
-    font-size: 3.5rem;
+    font-size: 1.5rem;
 }
 
 nav{
@@ -81,8 +81,11 @@ nav{
     user-select: none; /* CSS3 */
     -webkit-user-select: none; /* Safari、Chromeなど */
 
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+.button > button:focus{
+    outline: none;
 }
 .logo{
 
@@ -131,7 +134,17 @@ nav{
 }
 @media screen and (max-width: 768px){
     body{
-        overflow-x: hidden;
+        /* overflow-x: hidden; */
+        overflow-x: none;
+    }
+    nav{
+        padding-top: 0;
+        padding-bottom: 0;
+
+    }
+    
+    .card-body{
+        height: 400px;
     }
     .nav-links{
         opacity: 0;

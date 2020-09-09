@@ -20,8 +20,8 @@
         <h4><i class="fa fa-book" aria-hidden="true"></i>tango-app</h4>
     </div>
     <ul class="nav-links">
-        <li><a href="/login">login</a></li>
-        <li><a href="/newAccount">signup</a></li>
+        <li><a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
+        <li><a href="/newAccount"><i class="fa fa-user-plus" aria-hidden="true"></i> Signup</a></li>
     </ul>
     <div class="burger">
         <div class="line1"></div>
@@ -29,16 +29,17 @@
         <div class="line3"></div>
     </div>
     <div class="black-bg" id="js-black-bg"></div>
-</nav>
+  </nav>
 
 <div class="container">
 
   <div id="nav">
     <div class="mt-3">
-      <p>問題数を選択してください</p>
+      <p>問題数を選択してください　: 　
       <input type="radio" name="r" id="r1" value="0" class="ml-2" checked="checked" ><label for="r1">10問</label>
       <input type="radio" name="r" id="r2" value="1" class="ml-2"><label for="r2">30問</label>
       <input type="radio" name="r" id="r3" value="2" class="ml-2"><label for="r3">全問</label>
+    </p>
     </div>
     <div id="qus" class="mx-auto">
       
@@ -55,9 +56,9 @@
       <p class="text-center" type ="hidden"><span id="textdiv_5" type="hidden">　</span></p>
     </div>
     <div class="button">
-      <button type="button" class="btn btn-outline-dark w-25 mt-5" onclick="changeText()" id ="start">START</button>
-      <button type="button" class="btn btn-outline-dark w-25 mt-5" onclick="back()" id="bk_btn">back</button>
-      <button type="button" class="btn btn-outline-danger w-25 mt-5" onclick="Reset()">Reset</button>
+      <button type="button" class="play-btn-inner"   onclick="changeText()" id ="start">START</button>
+      <button type="button" class="play-btn-inner"   onclick="back()" id="bk_btn">back</button>
+      <button type="button" class="play-btn-inner" onclick="Reset()">Reset</button>
 
     </div>
   </div>
@@ -98,7 +99,8 @@
   //*****************************************************************
   function getCSV() {
     let req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-    var testfile = "tango20200718.csv";
+    var testfile = "output4.csv";
+    // var testfile = "tango20200718.csv";
     req.open("get", "csv/" + testfile, true); // アクセスするファイルを指定   
     req.send(null); // HTTPリクエストの発行
     // レスポンスが返ってきたらconvertCSVtoArray()を呼ぶ	

@@ -2,19 +2,20 @@
 <div class="container">
 <p id ="uid" style="display: none;"><%= data.id %></p>
     <div id="nav">
-        <p>ファイル選択：<br>
+        <p class="mt-3">ファイル選択：
             <select id="target">
                 <% for(let i in file){ %>
                 <option><%= file[i]%>
                     <%}%>
               </select>
-              <button type="button" class="btn btn-outline-primary" onclick="getCSV()">ファイルを読込む</button>
+              <button type="button" class="filebtn" onclick="getCSV()">　ファイルを読込む　</button>
             </p>
       <div class="mt-3">
-        <p>問題数を選択してください</p>
+        <p>問題数を選択してください：
         <input type="radio" name="r" id="r1" value="0" class="ml-2" checked="checked"><label for="r1">10問</label>
         <input type="radio" name="r" id="r2" value="1" class="ml-2"><label for="r2">30問</label>
         <input type="radio" name="r" id="r3" value="2" class="ml-2"><label for="r3">全問</label>
+    </p>
       </div>
       <div id="qus" class="mx-auto">
         
