@@ -35,7 +35,16 @@
 
   <div id="nav">
     <div class="mt-3">
-      <p>問題数を選択してください　: 　
+      <p style="margin: 0;">問題を選択してください　: 　
+        <button type="button" class="btn btn-outline-primary" onclick="change_table('ip')" >ITパスポート</button>
+        <button type="button" class="btn btn-outline-success" onclick="change_table('feap')">基本情報～応用情報</button>
+        <button type="button" class="btn btn-outline-danger"  onclick="change_table('ap')">応用情報</button>
+        <button type="button" class="btn btn-outline-info"  onclick="change_table('ky')">共 通</button>
+    
+    </p>
+    </div>
+    <div class="mt-1">
+      <p>出題数を選択してください　: 　
       <input type="radio" name="r" id="r1" value="0" class="ml-2" checked="checked" ><label for="r1">10問</label>
       <input type="radio" name="r" id="r2" value="1" class="ml-2"><label for="r2">30問</label>
       <input type="radio" name="r" id="r3" value="2" class="ml-2"><label for="r3">全問</label>
@@ -49,7 +58,6 @@
     <P id="cnt">　</P>
     <div class="card-body">
       <p id="textdiv_1" class="text-center font-weight-bold">　</p>
-      <!-- <h2 id="textdiv_1" class="text-center font-weight-bold">  </h2> -->
       <p class="border-bottom text-center"><span id="textdiv_2">　</span></p>
       <p class="border-bottom text-center"><span id="textdiv_3">　</span></p>
       <p class="border-bottom text-center"><span id="textdiv_4">　</span></p>
@@ -62,11 +70,6 @@
 
     </div>
   </div>
-
-
-
-   
-
 <script src=javascripts/app.js></script>
 </body>
 <script>
@@ -99,8 +102,7 @@
   //*****************************************************************
   function getCSV() {
     let req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-    var testfile = "output4.csv";
-    // var testfile = "tango20200718.csv";
+    var testfile = "unicode_utf8.csv";
     req.open("get", "csv/" + testfile, true); // アクセスするファイルを指定   
     req.send(null); // HTTPリクエストの発行
     // レスポンスが返ってきたらconvertCSVtoArray()を呼ぶ	
@@ -157,6 +159,48 @@
     }
     bk_btn.disabled = true;
   };
+
+  //問題種別選択
+  function change_table(x){
+    //テーブル初期化
+    
+    for(let i = 0; i < array.length-1; i++){
+      var it_pass = array[i][3].indexOf('IP')
+      var fe_pass = array[i][3].indexOf('FE')
+      var ap_pass = array[i][3].indexOf('AP')
+
+      switch(x){
+        case 'ip':
+          if ((it_pass != -1 && fe_pass == -1 && ap_pass == -1)  ){
+          
+          tbody.innerHTML += "<tr><td>" + (i + 1) + "</td><td>" + array[i][0] + "</td><td>" + array[i][1] + "</td><td>" + array[i][2] + "</td><td>" + array[i][3] + "</td><td>" + array[i][4] + "</td></tr>";
+          }
+          break;
+//          
+        case 'feap':
+          if ((it_pass == -1 && fe_pass != -1 && ap_pass != -1  ) || (it_pass == -1 && fe_pass != -1 && ap_pass == -1 ) ||(it_pass != -1 && fe_pass != -1 && ap_pass == -1) ){
+          
+          tbody.innerHTML += "<tr><td>" + (i + 1) + "</td><td>" + array[i][0] + "</td><td>" + array[i][1] + "</td><td>" + array[i][2] + "</td><td>" + array[i][3] + "</td><td>" + array[i][4] + "</td></tr>";
+          }
+          break;
+//
+        case 'ap':
+          if (it_pass == -1 && fe_pass == -1 && ap_pass != -1  ){
+          
+          tbody.innerHTML += "<tr><td>" + (i + 1) + "</td><td>" + array[i][0] + "</td><td>" + array[i][1] + "</td><td>" + array[i][2] + "</td><td>" + array[i][3] + "</td><td>" + array[i][4] + "</td></tr>";
+          }
+          break;
+//
+        case 'ky':
+          if (it_pass != -1 && fe_pass != -1 && ap_pass != -1  ){
+          
+           tbody.innerHTML += "<tr><td>" + (i + 1) + "</td><td>" + array[i][0] + "</td><td>" + array[i][1] + "</td><td>" + array[i][2] + "</td><td>" + array[i][3] + "</td><td>" + array[i][4] + "</td></tr>";
+          }
+          break;
+      }
+    }
+    table_cnt.textContent = cnt;
+ }
 
   //*****************************************************************
   // changeText() ボタンを押されたら表示を変える関数 

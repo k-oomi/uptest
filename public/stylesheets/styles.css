@@ -4,6 +4,10 @@
     box-sizing: border-box;
      
 }
+#nav > div > p > button{
+    font-size: 16px;
+    padding: 4px
+}
 .filebtn{
     
     text-decoration: none;
