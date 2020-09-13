@@ -43,10 +43,7 @@
     
 }
 
-.card-body > p:nth-child(4) > span{
-    /* color: red; */
-    /* background-color: red; */
-}
+
 #textdiv_1{
     user-select: none; /* CSS3 */
     -webkit-user-select: none; /* Safari、Chromeなど */

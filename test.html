@@ -24,5 +24,20 @@
             btn.disabled = true;
         }
     }
+
+    let ary = [];
+    let ary2 = [];
+    let ary3 = new Array('a','','b','c','d');
+
+    // ary = [1,2,3,4,5];
+    // ary2 = ary;
+    // console.log('ary2は' + ary2);
+    // ary = [];
+    // console.log('aryは' + ary);
+    for(let i in ary3){
+        console.log(ary3[i].indexOf('b'));
+    };
+    ary2[0] = ary3;
+    console.log('ary2は' + ary2[0][1]);
 </script>
 </html>
